@@ -21,24 +21,35 @@ function App() {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          URL:
-          <input
-            type="text"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      {results && (
-        <div>
-          <h2>Results:</h2>
-          <ul>{results.length}</ul>
-        </div>
-      )}
+    <div id="main-wrapper">
+      <div id="top-row">
+        <h1>
+          THE <span>THE</span> COUNTER
+        </h1>
+      </div>
+
+      <div id="mid-row">
+        <form id="submit-field" onSubmit={handleSubmit}>
+          <label>
+            URL:
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+            />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+      <div id="bot-row">
+        {results && (
+          <div>
+            <h2 id="results">RESULTS:</h2>
+            <h4>There are {results.length} thes on this page, wow!</h4>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
