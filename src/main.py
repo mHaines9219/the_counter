@@ -11,6 +11,7 @@ CORS(app)
 def process_url():
     data = request.json
     url = data.get('url')
+    # add addenum to url if not typed correctly
     if not url:
         return jsonify({"error": "No URL provided"}), 400
     

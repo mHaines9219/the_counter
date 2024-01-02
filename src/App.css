@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap');
+* {
+  font-family: Rubik Maps;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -7,8 +12,8 @@ body {
 }
 
 span {
-  font-family: monospace;
-  font-size: 3em;
+  /* font-family: monospace; */
+  font-size: 2em;
   animation: color-change 1s infinite;
 }
 
@@ -51,7 +56,7 @@ span {
 #main-wrapper {
   display: grid;
   grid-template-rows: 100px 100px 100px;
-  gap: 250px;
+  gap: 200px;
   padding: 20px;
   background-color: black;
   border-radius: 40px;
@@ -79,12 +84,25 @@ span {
   align-items: center;
 }
 
-button {
+#submit-btn {
   margin-top: 100px;
+  font-family: monospace;
+  width: 200px;
+  align-self: center;
 }
 
 #results {
   animation: color-change 1s infinite;
   text-align: center;
-  
+}
+
+h2 {
+  font-family: monospace;
+}
+
+#url-field {
+  text-align: center;
+  font-family: monospace;
+  width: 800px;
+  height: 50px;
 }
