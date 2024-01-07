@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import './App.css';
+import Banner from './components/Banner/Banner';
 
 function App() {
   const [url, setUrl] = useState('');
@@ -35,12 +36,7 @@ function App() {
 
   return (
     <div id="main-wrapper">
-      <div id="top-row">
-        <h1>
-          THE <span>THE</span> COUNTER
-        </h1>
-      </div>
-
+      <Banner />
       <div id="mid-row">
         <form id="submit-field" onSubmit={handleSubmit}>
           <label>
