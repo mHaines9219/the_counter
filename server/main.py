@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, Comment
 import re
 import requests
 from flask import Flask, request, jsonify
@@ -11,28 +11,31 @@ CORS(app)
 def process_url():
     data = request.json
     url = data.get('url')
-    # add addenum to url if not typed correctly
     if not url:
         return jsonify({"error": "No URL provided"}), 400
-    
+
     response = requests.get(url)
     if response.status_code != 200:
         return jsonify({"Error": "Failed to retrieve webpage"}), 500
-    
+
     soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Remove script and style elements
+    for script_or_style in soup(["script","head", "style", "head", "title", "[document]"]):
+        script_or_style.extract()
+
+    # Remove comments
+    for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
+        comment.extract()
+
+    text = soup.get_text()
 
     def contains_the(text):
         return re.findall(r'\bthe\b', text, re.IGNORECASE)
 
-    the_elements = soup.find_all(string=contains_the)  # Corrected line
+    results = contains_the(text)
 
-    results = []
-    for element in the_elements:
-        matches = contains_the(element)
-        for match in matches:
-            results.append(match)
-
-    return jsonify({'results': results})
+    return jsonify({'results': len(results)})
 
 if __name__ == '__main__':
     app.run(debug=True)
