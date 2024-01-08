@@ -1,0 +1,7 @@
+@media screen and (max-width: 500px) {
+  h2.results-msg {
+    display: flex;
+    text-align: center;
+    align-items: center;
+  }
+}

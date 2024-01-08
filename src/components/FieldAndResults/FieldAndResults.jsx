@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './FieldAndResults.css';
 
 export default function FieldAndResults() {
   const [url, setUrl] = useState('');
@@ -54,7 +55,7 @@ export default function FieldAndResults() {
 
         {results && (
           <div>
-            <h2>{getResultMessage()}</h2>
+            <h2 className="results-msg">{getResultMessage()}</h2>
           </div>
         )}
       </div>
