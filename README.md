@@ -1,8 +1,22 @@
-# React + Vite
+# The THE Counter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The The Counter is a fun little app I made to find all the "the"s on any given webpage
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Python
+- React
+- BeautifulSoup4
+
+## MVP
+
+- Query a URL to locate all the "the"s on the page
+- Different messages based on quantity of "the"s
+
+## Stretch Goals
+
+- User can input a word to search
+
+### Known Bugs
+
+- Despite attempts at filtering, scraper still counts "the"s that are not visible on page.
