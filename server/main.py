@@ -7,10 +7,11 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/process-url', methods=['POST'])
+
+@app.route("/process-url", methods=["POST"])
 def process_url():
     data = request.json
-    url = data.get('url')
+    url = data.get("url")
     if not url:
         return jsonify({"error": "No URL provided"}), 400
 
@@ -18,10 +19,12 @@ def process_url():
     if response.status_code != 200:
         return jsonify({"Error": "Failed to retrieve webpage"}), 500
 
-    soup = BeautifulSoup(response.text, 'html.parser')
+    soup = BeautifulSoup(response.text, "html.parser")
 
     # Remove script and style elements
-    for script_or_style in soup(["script","head", "style", "head", "title", "[document]"]):
+    for script_or_style in soup(
+        ["script", "head", "style", "head", "title", "[document]"]
+    ):
         script_or_style.extract()
 
     # Remove comments
@@ -31,11 +34,14 @@ def process_url():
     text = soup.get_text()
 
     def contains_the(text):
-        return re.findall(r'\bthe\b', text, re.IGNORECASE)
+        return re.findall(r"\bthe\b", text, re.IGNORECASE)
 
+    # try .string
+    # or try this table_bs.find_all(string="Florida")
     results = contains_the(text)
 
-    return jsonify({'results': len(results)})
+    return jsonify({"results": len(results)})
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     app.run(debug=True)
