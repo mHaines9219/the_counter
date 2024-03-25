@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import './FieldAndResults.css';
 
 export default function FieldAndResults() {
   const [url, setUrl] = useState('');
   const [results, setResults] = useState(null);
+  console.log('FieldAndResults');
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    console.log('Evt handler');
     try {
+      console.log('Evt handler inblock');
+
       const response = await axios.post('http://127.0.0.1:5000/process-url', {
         url,
       });
@@ -21,14 +25,14 @@ export default function FieldAndResults() {
   };
 
   const getResultMessage = () => {
-    if (!results || results.length === 0) {
+    if (!results || results === 0) {
       return '😩 No "the"s found on this page. 😩';
-    } else if (results.length === 1) {
+    } else if (results === 1) {
       return '😐 There is 1 "the" on this page. 😐';
-    } else if (results.length < 1000) {
-      return `😲 There are ${results.length} "the"s on this page, wow! 😲`;
-    } else if (results.length > 1000) {
-      return `🤖 Holy Moly! There's ${results.length} "the"s on this page! Overload! 🤖`;
+    } else if (results < 1000) {
+      return `😲 There are ${results} "the"s on this page, wow! 😲`;
+    } else if (results > 1000) {
+      return `🤖 Holy Moly! There's ${results} "the"s on this page! Overload! 🤖`;
     }
   };
   return (
@@ -52,7 +56,6 @@ export default function FieldAndResults() {
       </div>
       <div id="bot-row">
         <h1 id="results">RESULTS:</h1>
-
         {results && (
           <div>
             <h2 className="results-msg">{getResultMessage()}</h2>

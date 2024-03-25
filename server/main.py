@@ -28,7 +28,10 @@ def process_url():
         script_or_style.extract()
 
     # Remove comments
-    for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
+    # for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
+    #     comment.extract()
+
+    for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
 
     text = soup.get_text()
