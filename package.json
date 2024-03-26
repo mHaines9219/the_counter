@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "proxy": "https://polar-sea-72538-31ead2a103d4.herokuapp.com/",
   "homepage": "https://mhaines9219.github.io/",
   "scripts": {
     "dev": "vite",
