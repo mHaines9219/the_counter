@@ -4,6 +4,7 @@ import requests
 from flask import Flask, request, jsonify
 from flask.helpers import send_from_directory
 from flask_cors import CORS, cross_origin
+import os
 
 app = Flask(__name__, static_folder="../dist")
 CORS(app)
