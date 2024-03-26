@@ -5,6 +5,7 @@ import FieldAndResults from './components/FieldAndResults/FieldAndResults';
 function App() {
   return (
     <div id="main-wrapper">
+      
       <Banner />
       <FieldAndResults />
     </div>
