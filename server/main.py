@@ -23,31 +23,12 @@ def process_url():
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # Remove script and style elements
-    # for script_or_style in soup(
-    #     ["script", "head", "style", "head", "title", "[document]"]
-    # ):
-    #     script_or_style.extract()
-
-    # Remove comments
-    # for comment in soup.find_all(text=lambda text: isinstance(text, Comment)):
-    #     comment.extract()
-
-    # for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
-    #     comment.extract()
-
     text = soup.get_text()
 
-    # def contains_word(text):
-    #     return re.findall(r"\bthe\b", text, re.IGNORECASE)
-
     def contains_word(text, wordToSearch):
-        # Use an f-string to insert the variable into the regex pattern
         pattern = rf"{wordToSearch}"
         return re.findall(pattern, text, re.IGNORECASE)
 
-    # try .string
-    # or try this table_bs.find_all(string="Florida")
     results = contains_word(text, wordToSearch)
 
     return jsonify({"results": len(results), "word": wordToSearch, "url": url})
