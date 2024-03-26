@@ -11,7 +11,7 @@ export default function FieldAndResults() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:5000/process-url', {
+      const response = await axios.post('process-url', {
         url,
         wordToSearch,
       });
