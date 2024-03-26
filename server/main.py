@@ -36,11 +36,14 @@ def process_url():
     return jsonify({"results": len(results), "word": wordToSearch, "url": url})
 
 
-@app.route("/")
-@cross_origin()
-def serve():
-    return send_from_directory(app.static_folder, "index.html")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + "/" + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, "index.html")
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(use_reloader=True, port=5000, threaded=True)
