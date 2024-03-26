@@ -9,8 +9,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
-
+    "deploy": "gh-pages -d dist",
+    "postinstall": "vite build"
   },
   "dependencies": {
     "axios": "^1.6.3",
