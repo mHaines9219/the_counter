@@ -10,15 +10,11 @@ export default function FieldAndResults() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log('Evt handler');
     try {
-      console.log('Evt handler inblock');
-
       const response = await axios.post('http://127.0.0.1:5000/process-url', {
         url,
         wordToSearch,
       });
-      console.log(response.data);
       setResults(response.data.results);
       setSubmittedWord(wordToSearch); // Disable the input field after the axios call
     } catch (error) {
