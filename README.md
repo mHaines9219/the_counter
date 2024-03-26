@@ -1,6 +1,6 @@
-# The THE Counter
+# The WORD Counter
 
-The The Counter is a fun little app I made to find all the "the"s on any given webpage
+The Word Counter is a fun little app I made to find all of the user-inputted words on a given webpage
 
 ## Tech Stack
 
@@ -10,8 +10,8 @@ The The Counter is a fun little app I made to find all the "the"s on any given w
 
 ## MVP
 
-- Query a URL to locate all the "the"s on the page
-- Different messages based on quantity of "the"s
+- Query a URL to locate all the given words on the page
+- Different messages based on quantity of given word
 
 ## Stretch Goals
 
@@ -19,4 +19,4 @@ The The Counter is a fun little app I made to find all the "the"s on any given w
 
 ### Known Bugs
 
-- Despite attempts at filtering, scraper still counts "the"s that are not visible on page.
+- Despite attempts at filtering, scraper still counts some words that are not visible on page sometimes.
